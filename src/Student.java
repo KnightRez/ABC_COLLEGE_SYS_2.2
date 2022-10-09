@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Student extends Persons
+public class Student extends Person
 {
 	Scanner sc = new Scanner(System.in);
 	

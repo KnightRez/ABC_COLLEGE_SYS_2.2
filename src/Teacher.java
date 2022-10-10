@@ -1,153 +1,113 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Teacher extends Person {
-    private int department;
-    private int designation;
-    private int salary;
-    private int teachingHours;
-    private List<Teacher> teachers = new ArrayList<Teacher>();
+    private int _department;
+    private int _designation;
+    private double _salary = 1200;
+    private int _teachingHours;
 
-    public Teacher(int ID, String firstName, String lastName, String gender, String address, long phoneNumber,int department, int designation, int salary, int teachingHours) {
+//    enum Department {
+//        Business, Computing
+//    }
+//    enum Designation {
+//        //Head of faculty (HOF)
+//        //Coordinator (CO)
+//        //Lecturer (L)
+//        HOF, CO, L
+//    }
+
+    public Teacher(int ID, String firstName, String lastName, int gender, String address, long phoneNumber,int department, int designation, int teachingHours) {
         super(ID, firstName, lastName, gender, address, phoneNumber);
-        this.department = department;
-        this.designation = designation;
-        this.salary = salary;
-        this.teachingHours = teachingHours;
+        _department = department;
+        _designation = designation;
+        _teachingHours = teachingHours;
     }
 
-    public int getDepartment() {
-        return department;
+    private Map<Integer, String> Designation = new HashMap<Integer, String>(){
+        {{
+            put(1, "HOF");
+            put(2, "CO");
+            put(3, "L");
+        }}
+    };
+
+    public enum Designation {
+        HeadOfFaculty,
+        Coordinator,
+        Lecturer
     }
 
-    public int getDesignation() {
-        return designation;
-    }
+    public void calculateSalary(){
+        double ha, ma, ta;
+        switch (_designation) {
+            case 1:
+                System.out.println("Head of Faculty");
+                if (_teachingHours > 8) {
+                    _salary += (_teachingHours - 8) * 325;
+                }
 
-    public int getSalary() {
-        return salary;
-    }
+                break;
+            case 2:
+                System.out.println("Coordinator");
+                if (_teachingHours > 13) {
+                    _salary += (_teachingHours - 13) * 325;
+                }
+                break;
+            case 3:
+                System.out.println("Lecturer");
+                if (_teachingHours > 18) {
+                    _salary += (_teachingHours - 18) * 325;
+                }
+                break;
+            default:
+                System.out.println("Invalid designation");
+                break;
+        }
 
-    public int getTeachingHours() {
-        return teachingHours;
-    }
-
-    public void setDepartment(int department) {
-        this.department = department;
-    }
-
-    public void setDesignation(int designation) {
-        this.designation = designation;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public void setTeachingHours(int teachingHours) {
-        this.teachingHours = teachingHours;
+        ha = _salary*0.1;
+        ma = _salary*0.03;
+        ta = _salary*0.05;
+        _salary += ha+ma+ta;
     }
 
     public void DisplayEntry() {
         DisplayPerson();
-        System.out.println("Department: " + department);
-        System.out.println("Designation: " + designation);
-        System.out.println("Salary: " + salary);
-        System.out.println("Teaching Hours: " + teachingHours);
+        System.out.println("Department: " + _department);
+        System.out.println("Designation: " + _designation);
+        System.out.println("Salary: " + _salary);
+        System.out.println("Teaching Hours: " + _teachingHours);
     }
 
-    public void addTeacher()
-    {
-        teachers.add(InputTeachers());
+    public int getDepartment() {
+        return _department;
     }
 
-    public void updateTeacher(int ID, Teacher entry)
-    {
-        teachers.replaceAll(e -> e.getID() == ID ? entry : e);
+    public int getDesignation() {
+        return _designation;
     }
 
-    public void deleteTeacher(int Id) {
-        teachers.removeIf(entry -> entry.getID() == Id);
+    public double getSalary() {
+        return _salary;
     }
 
-    public void calculateSalary(int Id)
-
-    {
-        double overtime, totalSalary = 1200.00, ha, ma, ta, netSalary;
-        //find id function
-        //compare Designation
-        if (designation == 1){
-            if (teachingHours > 8){
-                overtime = (teachingHours - 8)*325;
-                totalSalary += overtime;
-            }
-
-        }
-        else if (designation == 2){
-            if (teachingHours > 13){
-                overtime = (teachingHours - 13)*325;
-                totalSalary += overtime;
-            }
-        }
-        else if (designation == 3){
-            if (teachingHours > 18){
-                overtime = (teachingHours - 18)*325;
-                totalSalary += overtime;
-            }
-        }
-        else{
-            //error
-        }
-
-        ha = totalSalary*0.1;
-        ma = totalSalary*0.03;
-        ta = totalSalary*0.05;
-
-        netSalary = totalSalary+ha+ma+ta;
+    public int getTeachingHours() {
+        return _teachingHours;
     }
 
-    public void viewAllTeachers() {
-        for (Teacher entry : teachers) {
-            entry.DisplayEntry();
-        }
+    public void setDepartment(int department) {
+        _department = department;
     }
 
-    public Teacher InputTeachers() {
-        Scanner scanner = new Scanner(System.in);
-        Scanner stringscan = new Scanner(System.in);
-        System.out.println("Enter the ID of the teacher: ");
-        int ID = scanner.nextInt();
-        System.out.println("Enter the First Name of the teacher: ");
-        String firstName = stringscan.next();
-        System.out.println("Enter the Last Name of the teacher: ");
-        String lastName = stringscan.next();
-        System.out.println("Enter the Gender of the teacher: ");
-        String gender = stringscan.next();
-        System.out.println("Enter the Phone Number of the teacher: ");
-        Long phonenumber = stringscan.nextLong();
-        System.out.println("Enter the Address of the teacher: ");
-        String address = stringscan.next();
-        System.out.println("1 for Computing 2 for Business \nEnter the department of the teacher: ");
-        int department = scanner.nextInt();
-        System.out.println("1 for Head of Faculty 2 for Coordinator 3 for Lecturer \nEnter the designation of the teacher: ");
-        int designation = scanner.nextInt();
-        System.out.println("Enter Number of Teaching Hours: ");
-        int teachingHours = scanner.nextInt();
-
-
-        return teachers = new Teacher(ID, firstName, lastName, gender, address, phonenumber, department, designation,0,teachingHours);
+    public void setDesignation(int designation) {
+        _designation = designation;
     }
 
-    public int SearchID(int ID) {
-        for (Teacher entry : teachers) {
-            if (entry.getID() == ID) {
-                return ID;
-            }
-        }
+    public void setSalary(int salary) {
+        _salary = salary;
     }
 
-
-
-
+    public void setTeachingHours(int teachingHours) {
+        _teachingHours = teachingHours;
+    }
 }

@@ -1,77 +1,77 @@
 
 public class Person
 {
-	public int ID;
-	public String firstName, lastName, gender, address;
-	public long phoneNumber;
+	public int _id, _gender;
+	public String _firstName, _lastName, _address;
+	public long _phoneNo;
 
-	public Person(int ID, String firstName, String lastName, String gender, String address, long phoneNumber)
+	public Person(int ID, String firstName, String lastName, int gender, String address, long phoneNumber)
 	{
-		this.ID = ID;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.gender = gender;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
+		_id = ID;
+		_firstName = firstName;
+		_lastName = lastName;
+		_gender = gender;
+		_address = address;
+		_phoneNo = phoneNumber;
 	}
 
 	public int getID() {
-		return ID;
+		return _id;
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return _firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return _lastName;
 	}
 
-	public String getGender(){
-		return gender;
+	public int getGender(){
+		return _gender;
 	}
 
 	public String getAddress() {
-		return address;
+		return _address;
 	}
 
 	public long getPhoneNumber() {
-		return phoneNumber;
+		return _phoneNo;
 	}
 
 	public void setID(int ID) {
-		this.ID = ID;
+		this._id = ID;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		_firstName = firstName;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		_lastName = lastName;
 	}
 
-	public void setGender(String gender){
-		this.gender = gender;
+	public void setGender(int gender){
+		_gender = gender;
 	}
 
 	public void setAddress(String address) {
-		this.address = address;
+		_address = address;
 	}
 
 	public void setPhoneNumber(long phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		_phoneNo = phoneNumber;
 	}
 
 
 
 	public void DisplayPerson(){
-		System.out.println("ID: " + ID);
-		System.out.println("First Name: " + firstName);
-		System.out.println("Last Name: " + lastName);
-		System.out.println("Gender: " + gender);
-		System.out.println("Address: " + address);
-		System.out.println("Phone Number: " + phoneNumber);
+		System.out.println("ID: " + _id);
+		System.out.println("First Name: " + _firstName);
+		System.out.println("Last Name: " + _lastName);
+		System.out.println("Gender: " + _gender);
+		System.out.println("Address: " + _address);
+		System.out.println("Phone Number: " + _phoneNo);
 	}
 	public void GenerateID(){
 

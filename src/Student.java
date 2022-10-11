@@ -2,13 +2,19 @@ import java.util.Scanner;
 
 public class Student extends Person
 {
+	// changes to be updated by October 12, 2022
 	public Student(int ID, String firstName, String lastName, int gender, String address, long phoneNumber) 
 	{
 		super(ID, firstName, lastName, gender, address, phoneNumber);
 	}
 
 	Scanner sc = new Scanner(System.in);
-	
+
+	public void test()
+	{
+		System.out.println("Hello");
+	}
+
 	String[] modules = 
 		{
 			"Introduction to Computing", "Computer Programming 1", "Introduction to Human Computer Interaction",
@@ -191,15 +197,15 @@ public class Student extends Person
 				continue;
 			}
 			
-			if (catchError == true)
+			if (catchError)
 			{
 				System.out.println("CatchError Fired Continue");
-				continue;
 			}
 				
-			else if (catchError == false)
+			else if (!catchError)
 			{
 				System.out.println("CatchError Fired Break");
+				running = false;
 				break;
 			}
 		}

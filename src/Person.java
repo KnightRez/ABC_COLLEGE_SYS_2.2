@@ -1,9 +1,10 @@
 
 public class Person
 {
-	public int _id, _gender;
+	public int _id, _gender; // value of _gender is 0 or 1; Male/Female.
 	public String _firstName, _lastName, _address;
 	public long _phoneNo;
+	private String[] _sexType = {"Male", "Female"}; 
 
 	public Person(int ID, String firstName, String lastName, int gender, String address, long phoneNumber)
 	{
@@ -26,9 +27,9 @@ public class Person
 	public String getLastName() {
 		return _lastName;
 	}
-
-	public int getGender(){
-		return _gender;
+	
+	public String getGender() {
+		return _sexType[_gender];
 	}
 
 	public String getAddress() {
@@ -74,7 +75,7 @@ public class Person
 		System.out.println("Phone Number: " + _phoneNo);
 	}
 	public void GenerateID(){
-
+		//para san po? - Gab
 	}
 }
 

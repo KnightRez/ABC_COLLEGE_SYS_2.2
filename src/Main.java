@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 public class Main {
 
@@ -55,25 +56,32 @@ public class Main {
 		frmAbcCollegeFinancial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAbcCollegeFinancial.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("ABC COLLEGE");
+		JLabel lblNewLabel = new JLabel("ABC COLLEGE", SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 24));
-		lblNewLabel.setBounds(217, 64, 145, 32);
+		lblNewLabel.setBounds(10, 64, 564, 32);
 		frmAbcCollegeFinancial.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("FINANCIAL MANAGEMENT SYSTEM");
+		JLabel lblNewLabel_1 = new JLabel("FINANCIAL MANAGEMENT SYSTEM", SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Yu Gothic Light", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(151, 107, 294, 32);
+		lblNewLabel_1.setBounds(10, 107, 564, 32);
 		frmAbcCollegeFinancial.getContentPane().add(lblNewLabel_1);
 		
-		JButton btnNewButton = new JButton("TEACHER");
-		btnNewButton.setBackground(new Color(240, 240, 240));
-		btnNewButton.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton teacherButton = new JButton("TEACHER");
+		teacherButton.setBackground(new Color(240, 240, 240));
+		teacherButton.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		teacherButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("qweqwe");
+				
+				/**
+				 				student_form javaswingstudent = new student_form(); //initialize
+								javaswingstudent.JavaSwingStudentScreen(); // call
+								frmAbcCollegeFinancial.dispose(); //close the current window
+				 **/
 			}
 		});
-		btnNewButton.setBounds(151, 285, 105, 23);
-		frmAbcCollegeFinancial.getContentPane().add(btnNewButton);
+		teacherButton.setBounds(151, 285, 105, 23);
+		frmAbcCollegeFinancial.getContentPane().add(teacherButton);
 		
 		JButton btnStudent = new JButton("STUDENT");
 		btnStudent.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
@@ -85,9 +93,9 @@ public class Main {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				student_form javaswingstudent = new student_form();
-				javaswingstudent.JavaSwingStudentScreen();
-				frmAbcCollegeFinancial.dispose();
+				student_form javaswingstudent = new student_form(); //initialize
+				javaswingstudent.JavaSwingStudentScreen(); // call
+				frmAbcCollegeFinancial.dispose(); //close the current window
 			}
 		});
 	}

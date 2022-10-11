@@ -2,6 +2,11 @@ import java.util.Scanner;
 
 public class Student extends Person
 {
+	public Student(int ID, String firstName, String lastName, int gender, String address, long phoneNumber) 
+	{
+		super(ID, firstName, lastName, gender, address, phoneNumber);
+	}
+
 	Scanner sc = new Scanner(System.in);
 	
 	String[] modules = 
@@ -23,6 +28,36 @@ public class Student extends Person
 	int[] selectedModules = new int[6];
 	int totalModules = modules.length, newMods, repeatMods, numberofModules;
 	float amountPaid, balance, totalAmount, subTotal1, subTotal2;
+	
+	public void setID(int id)
+	{
+		super.setID(id);
+	}
+	
+	public void setFirstName(String fname)
+	{
+		super.setFirstName(fname);
+	}
+	
+	public void setLastName(String lname)
+	{
+		super.setLastName(lname);
+	}
+	
+	public void setGender(int gen)
+	{
+		super.setGender(gen);
+	}
+	
+	public void setAddress(String add)
+	{
+		super.setAddress(add);
+	}
+	
+	public void setPhoneNumber(long pNumber)
+	{
+		super.setPhoneNumber(pNumber);
+	}
 	
 	public String[] getModuleList()
 	{

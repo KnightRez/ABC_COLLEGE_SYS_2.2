@@ -1,36 +1,29 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import javax.swing.BoxLayout;
-import java.awt.CardLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.SystemColor;
-import javax.swing.SwingConstants;
 
 public class Main {
 
-	private JFrame frmAbcCollegeFinancial;
+	private JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable()
-		{
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Main window = new Main();
-					window.frmAbcCollegeFinancial.setVisible(true);
-					window.frmAbcCollegeFinancial.setLocationRelativeTo(null);
+					window.frame.setVisible(true);
+					window.frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -49,54 +42,57 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmAbcCollegeFinancial = new JFrame();
-		frmAbcCollegeFinancial.setOpacity(1.0f);
-		frmAbcCollegeFinancial.setResizable(false);
-		frmAbcCollegeFinancial.setTitle("ABC College Financial Management");
-		frmAbcCollegeFinancial.setBounds(100, 100, 600, 500);
-		frmAbcCollegeFinancial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmAbcCollegeFinancial.getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("ABC COLLEGE", SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 24));
-		lblNewLabel.setBounds(10, 64, 564, 32);
-		frmAbcCollegeFinancial.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("FINANCIAL MANAGEMENT SYSTEM", SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Yu Gothic Light", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(10, 107, 564, 32);
-		frmAbcCollegeFinancial.getContentPane().add(lblNewLabel_1);
-		
-		JButton teacherButton = new JButton("TEACHER");
-		teacherButton.setBackground(new Color(240, 240, 240));
-		teacherButton.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		teacherButton.addActionListener(new ActionListener() {
+		frame = new JFrame();
+		frame.setUndecorated(true);
+		frame.getContentPane().setBackground(new Color(33, 37, 41));
+		frame.setBackground(new Color(33, 37, 41));
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 584, 291);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+
+		JLabel TItleLabel = new JLabel("ABC COLLEGE FINANCIAL MANAGEMENT SYSTEM", SwingConstants.CENTER);
+		TItleLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 17));
+		TItleLabel.setForeground(new Color(248, 249, 250));
+		TItleLabel.setBounds(10, 21, 564, 49);
+		frame.getContentPane().add(TItleLabel);
+
+		JButton teacherButton = new JButton("TEACHERS");
+		teacherButton.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 11));
+		teacherButton.setForeground(new Color(33, 37, 41));
+		teacherButton.setBackground(new Color(248, 249, 250));
+		teacherButton.setBounds(208, 119, 170, 23);
+		frame.getContentPane().add(teacherButton);
+
+		JButton studentButton = new JButton("STUDENTS");
+		studentButton.setForeground(new Color(33, 37, 41));
+		studentButton.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 11));
+		studentButton.setBackground(new Color(248, 249, 250));
+		studentButton.setBounds(208, 166, 170, 23);
+		frame.getContentPane().add(studentButton);
+
+		JButton btnQuit = new JButton("QUIT");
+		btnQuit.setForeground(new Color(33, 37, 41));
+		btnQuit.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 11));
+		btnQuit.setBackground(new Color(248, 249, 250));
+		btnQuit.setBounds(208, 215, 170, 23);
+		frame.getContentPane().add(btnQuit);
+
+
+		/**
+		 * ACTION EVENT LISTENERS
+		 */
+		btnQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("qweqwe");
-				
-				/**
-				 				student_form javaswingstudent = new student_form(); //initialize
-								javaswingstudent.JavaSwingStudentScreen(); // call
-								frmAbcCollegeFinancial.dispose(); //close the current window
-				 **/
+				System.exit(0);
 			}
 		});
-		teacherButton.setBounds(151, 285, 105, 23);
-		frmAbcCollegeFinancial.getContentPane().add(teacherButton);
-		
-		JButton btnStudent = new JButton("STUDENT");
-		btnStudent.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		btnStudent.setBackground(SystemColor.menu);
-		btnStudent.setBounds(340, 285, 105, 23);
-		frmAbcCollegeFinancial.getContentPane().add(btnStudent);
-		
-		btnStudent.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				student_form javaswingstudent = new student_form(); //initialize
-				javaswingstudent.JavaSwingStudentScreen(); // call
-				frmAbcCollegeFinancial.dispose(); //close the current window
+
+		studentButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Student_form stud_frame = new Student_form();
+				stud_frame.student_form(null);
+				frame.dispose();
 			}
 		});
 	}

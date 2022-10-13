@@ -1,12 +1,11 @@
-
+import java.util.Date;
+import java.util.concurrent.atomic.AtomicLong;
 public class Person
 {
-	public int _id, _gender; // value of _gender is 0 or 1; Male/Female.
-	public String _firstName, _lastName, _address;
-	public long _phoneNo;
-	private String[] _sexType = {"Male", "Female"}; 
+	public int _id;
+	public String _firstName, _lastName, _address, _phoneNo, _gender;
 
-	public Person(int ID, String firstName, String lastName, int gender, String address, long phoneNumber)
+	public Person(int ID, String firstName, String lastName, String gender, String address, String phoneNumber)
 	{
 		_id = ID;
 		_firstName = firstName;
@@ -28,21 +27,17 @@ public class Person
 		return _lastName;
 	}
 	
-	public String getGender() {
-		return _sexType[_gender];
-	}
+	public String getGender() { return _gender; }
 
 	public String getAddress() {
 		return _address;
 	}
 
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return _phoneNo;
 	}
 
-	public void setID(int ID) {
-		this._id = ID;
-	}
+	public void setID(int ID) { this._id = ID; }
 
 	public void setFirstName(String firstName) {
 		_firstName = firstName;
@@ -52,7 +47,7 @@ public class Person
 		_lastName = lastName;
 	}
 
-	public void setGender(int gender){
+	public void setGender(String gender){
 		_gender = gender;
 	}
 
@@ -60,11 +55,9 @@ public class Person
 		_address = address;
 	}
 
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		_phoneNo = phoneNumber;
 	}
-
-
 
 	public void DisplayPerson(){
 		System.out.println("ID: " + _id);
@@ -74,8 +67,22 @@ public class Person
 		System.out.println("Address: " + _address);
 		System.out.println("Phone Number: " + _phoneNo);
 	}
-	public void GenerateID(){
-		//para san po? - Gab
+	/**
+	 * Generate Unique ID
+	 */
+	//set current year as prefix
+	Date d = new Date();
+	int year = d.getYear() + 1900;
+	private static AtomicLong idCounter = new AtomicLong();
+	public static String createID() { return String.valueOf(idCounter.getAndIncrement()); }
+
+	public void generateID()
+	{
+		String prefixID = String.valueOf(year);
+		String suffixID = createID();
+		String generatedID = prefixID + suffixID;
+		this._id = Integer.parseInt(generatedID);
 	}
+
 }
 

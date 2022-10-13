@@ -17,8 +17,8 @@ public class Teacher extends Person {
 //        HOF, CO, L
 //    }
 
-    public Teacher(int ID, String firstName, String lastName, int gender, String address, long phoneNumber,int department, int designation, int teachingHours) {
-        super(ID, firstName, lastName, gender, address, phoneNumber);
+    public Teacher(int ID, String firstName, String lastName, String address, String gender, String phoneNumber, int department, int designation, int teachingHours) {
+        super(ID, firstName, lastName, address, gender, phoneNumber);
         _department = department;
         _designation = designation;
         _teachingHours = teachingHours;

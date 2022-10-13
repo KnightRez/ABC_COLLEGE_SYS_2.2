@@ -7,6 +7,28 @@ import java.util.Scanner;
 public class Accounting {
     private List<Teacher> _teachers = new ArrayList<Teacher>();
     private List<Student> _students = new ArrayList<Student>();
+    public void addStudent(Student student)
+    {
+        _students.add(student);
+    }
+
+    public void updateStudent(int inputID, Student updatedInfo)
+    {
+        _students.replaceAll( e -> e.getID() == inputID? updatedInfo : e);
+    }
+
+    public void removeStudent(int inputID)
+    {
+        _students.removeIf(e -> e.getID() == inputID);
+    }
+
+    public void displayStudentList()
+    {
+        for (Student studentEntry : _students)
+        {
+            studentEntry.displayStudentInfo();
+        }
+    }
 
     public void addTeacher(Teacher teacher)
     {
@@ -41,9 +63,9 @@ public class Accounting {
         String lastName = scanner.next();
         scanner.nextLine();
         System.out.println("Enter the Gender of the teacher [1]M|[2]F: ");
-        int gender = scanner.nextInt();
+        String gender = scanner.nextLine();
         System.out.println("Enter the Phone Number of the teacher: ");
-        Long phoneNo = scanner.nextLong();
+        String phoneNo = scanner.nextLine();
         System.out.println("Enter the Address of the teacher: ");
         String address = scanner.next();
         scanner.nextLine();

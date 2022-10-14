@@ -6,12 +6,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 
 public class remainingBalanceStudent_form {
 
+	Accounting database = new Accounting();
+	
 	private JFrame frame;
 	private JTextField textField;
 
@@ -65,10 +68,10 @@ public class remainingBalanceStudent_form {
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Check");
-		btnNewButton.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 11));
-		btnNewButton.setBounds(249, 158, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnCheck = new JButton("Check");
+		btnCheck.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 11));
+		btnCheck.setBounds(249, 158, 89, 23);
+		frame.getContentPane().add(btnCheck);
 		
 		JButton btnReturn = new JButton("Return");
 		btnReturn.setForeground(new Color(33, 37, 41));
@@ -84,6 +87,14 @@ public class remainingBalanceStudent_form {
 				frame.dispose();
 			}
 		});
+		
+		btnCheck.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				//JOptionPane.showMessageDialog(null, database.getBalance());
+				database.displayStudentList();
+			}
+		});
 	}
-
 }

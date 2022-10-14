@@ -20,43 +20,26 @@ public class Student extends Person
             };
 
     private String[] selectedModules = new String[6];
-    private int[] selectedModulesByNumber = new int[6];
 
-    public Student(int ID, String fName, String lName, String address, String gender, String pNumber, int newMods, int repeatMods, float amount) {
+    public Student(int ID, String fName, String lName, String address, String gender, String pNumber, int newMods, int repeatMods, float amount, String[] modules) {
         super(ID, fName, lName, address, gender, pNumber);
         this.numberOfNewModules = newMods;
         this.numberOfRepeatedModules = repeatMods;
         this.amountPaid = amount;
+        this.selectedModules = modules;
     }
 
     /**
      * Setters
      */
+    public void setSelectedModules(String[] modules)
+    {
+    	this.selectedModules = modules;
+    }
+    
     public void setAmountPaid(float amount)
     {
         this.amountPaid = amount;
-    }
-
-    public void setSelectedModulesByNumber(int[] selectedModuleArray)
-    {
-        if (selectedModuleArray.length <= 6)
-        {
-            for (int x = 0; x < selectedModuleArray.length; x++)
-            {
-                selectedModuleArray[x]--;
-            }
-            this.selectedModulesByNumber = selectedModuleArray;
-        }
-        else
-            System.out.println("Selected Module Array is out of Bounds");
-    }
-
-    public void setSelectedModules()
-    {
-        for (int x = 0; x < selectedModulesByNumber.length; x++)
-        {
-            selectedModules[x] = moduleNames[selectedModulesByNumber[x]];
-        }
     }
 
     public void setTotalAmount(float inputTotalAmount)
@@ -69,7 +52,7 @@ public class Student extends Person
         this.numberOfNewModules = newModules;
     }
 
-    public void setNumberOfRepeatedModulesModules(int repeatedModules)
+    public void setNumberOfRepeatedModules(int repeatedModules)
     {
         this.numberOfRepeatedModules = repeatedModules;
     }

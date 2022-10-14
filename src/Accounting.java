@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Accounting {
     private List<Teacher> _teachers = new ArrayList<Teacher>();
     private List<Student> _students = new ArrayList<Student>();
+    
     public void addStudent(Student student)
     {
         _students.add(student);

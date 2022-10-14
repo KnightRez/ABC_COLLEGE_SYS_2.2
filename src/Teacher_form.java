@@ -14,7 +14,7 @@ public class Teacher_form {
 	/**
 	 * Launch the application.
 	 */
-	public static void teacher_form(String[] args) {
+	public static void teacher_form() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

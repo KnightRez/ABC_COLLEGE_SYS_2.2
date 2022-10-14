@@ -14,7 +14,7 @@ public class Student_form {
 	/**
 	 * Launch the application.
 	 */
-	public static void student_form(String[] args) {
+	public static void student_form() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

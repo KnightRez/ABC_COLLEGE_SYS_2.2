@@ -83,6 +83,5 @@ public class Person
 		String generatedID = prefixID + suffixID;
 		this._id = Integer.parseInt(generatedID);
 	}
-
 }
 

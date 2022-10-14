@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
 public class Main {
 
 	private JFrame frame;
@@ -91,7 +92,15 @@ public class Main {
 		studentButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Student_form stud_frame = new Student_form();
-				stud_frame.student_form(null);
+				stud_frame.student_form();
+				frame.dispose();
+			}
+		});
+
+		teacherButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Teacher_form teacher_frame = new Teacher_form();
+				teacher_frame.teacher_form();
 				frame.dispose();
 			}
 		});

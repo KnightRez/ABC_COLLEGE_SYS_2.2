@@ -80,7 +80,7 @@ public class remainingBalanceStudent_form {
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Student_form studentform = new Student_form();
-				studentform.student_form(null);
+				studentform.student_form();
 				frame.dispose();
 			}
 		});

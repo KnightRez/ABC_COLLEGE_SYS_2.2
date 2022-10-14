@@ -180,7 +180,7 @@ public class addNewTeacher_form {
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Teacher_form teacherform = new Teacher_form();
-				teacherform.teacher_form(null);
+				teacherform.teacher_form();
 				frame.dispose();
 			}
 		});

@@ -19,7 +19,8 @@ public class updateStudent_form {
 	private JFrame frame;
 	private JTextField textField;
 	private JTable table;
-
+	private String row[][] = new String[9][9];
+	private String column[] = {"ID", "First Name", "Last Name", "Gender", "Phone Number", "Address", "No. of Modules", "No. of Repeated Modules", "No. of New Modules"};
 	/**
 	 * Launch the application.
 	 */
@@ -85,8 +86,9 @@ public class updateStudent_form {
 		scrollPane.setBounds(10, 114, 711, 305);
 		frame.getContentPane().add(scrollPane);
 		
-		table = new JTable();
+		table = new JTable(row, column);
 		scrollPane.setViewportView(table);
+		
 		
 		JButton btnReturn = new JButton("Return");
 		btnReturn.setForeground(new Color(33, 37, 41));

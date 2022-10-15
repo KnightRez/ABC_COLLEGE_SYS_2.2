@@ -21,32 +21,19 @@ public class remainingBalanceStudent_form {
 	/**
 	 * Launch the application.
 	 */
-	public static void remainingbalancestudent__form(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					remainingBalanceStudent_form window = new remainingBalanceStudent_form();
-					window.frame.setVisible(true);
-					window.frame.setLocationRelativeTo(null);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
-	public remainingBalanceStudent_form() {
-		initialize();
-	}
+	public remainingBalanceStudent_form(Accounting db) {
+		EventQueue.invokeLater(() -> {
+			try {
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() 
-	{
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		frame.setUndecorated(true);
@@ -56,13 +43,13 @@ public class remainingBalanceStudent_form {
 		frame.setBounds(100, 100, 584, 291);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Enter Student ID");
 		lblNewLabel.setForeground(new Color(248, 249, 250));
 		lblNewLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 14));
 		lblNewLabel.setBounds(86, 124, 141, 33);
 		frame.getContentPane().add(lblNewLabel);
-		
+
 		textField = new JTextField();
 		textField.setBounds(205, 127, 308, 20);
 		frame.getContentPane().add(textField);
@@ -79,11 +66,10 @@ public class remainingBalanceStudent_form {
 		btnReturn.setBackground(new Color(248, 249, 250));
 		btnReturn.setBounds(486, 11, 88, 23);
 		frame.getContentPane().add(btnReturn);
-		
+
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Student_form studentform = new Student_form();
-				studentform.student_form();
+				Student_form studentform = new Student_form(db);
 				frame.dispose();
 			}
 		});
@@ -97,4 +83,5 @@ public class remainingBalanceStudent_form {
 			}
 		});
 	}
+
 }

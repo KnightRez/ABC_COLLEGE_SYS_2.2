@@ -21,31 +21,19 @@ public class zeroBalanceStudent_form {
 	/**
 	 * Launch the application.
 	 */
-	public static void zerobalancestudent_form(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					zeroBalanceStudent_form window = new zeroBalanceStudent_form();
-					window.frame.setVisible(true);
-					window.frame.setLocationRelativeTo(null);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
-	public zeroBalanceStudent_form() {
-		initialize();
-	}
+	public zeroBalanceStudent_form(Accounting db) {
+		EventQueue.invokeLater(() -> {
+			try {
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frame = new JFrame();
 		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(new Color(33, 37, 41));
@@ -54,31 +42,31 @@ public class zeroBalanceStudent_form {
 		frame.setBounds(100, 100, 731, 430);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 59, 711, 360);
 		frame.getContentPane().add(scrollPane);
-		
+
 		table = new JTable();
 		table.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 11));
 		table.setForeground(new Color(255, 255, 255));
 		table.setBackground(new Color(108, 117, 125));
 		scrollPane.setViewportView(table);
-		
+
 		JButton btnReturn = new JButton("Return");
 		btnReturn.setForeground(new Color(33, 37, 41));
 		btnReturn.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		btnReturn.setBackground(new Color(248, 249, 250));
 		btnReturn.setBounds(633, 11, 88, 23);
 		frame.getContentPane().add(btnReturn);
-		
-		btnReturn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Student_form studentform = new Student_form();
-				studentform.student_form();
-				frame.dispose();
-			}
+
+		btnReturn.addActionListener(e -> {
+			Student_form studentform = new Student_form(db);
+			frame.dispose();
 		});
 	}
 
+	/**
+	 * Initialize the contents of the frame.
+	 */
 }

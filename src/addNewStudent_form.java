@@ -44,32 +44,22 @@ public class addNewStudent_form {
 	/**
 	 * Launch the application.
 	 */
-	public static void addnewstudent_form(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					addNewStudent_form window = new addNewStudent_form();
-					window.frame.setVisible(true);
-					window.frame.setLocationRelativeTo(null);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
-	public addNewStudent_form() {
-		initialize();
-	}
+	public addNewStudent_form(Accounting db) {
+		EventQueue.invokeLater(() -> {
+			try {
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	@SuppressWarnings("deprecation")
-	private void initialize() {
 		frame = new JFrame();
 		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(new Color(33, 37, 41));
@@ -95,7 +85,7 @@ public class addNewStudent_form {
 		JButton btnAdd = new JButton(">");
 		btnAdd.setBounds(232, 30, 57, 23);
 		frame.getContentPane().add(btnAdd);
-		
+
 		JButton btnRemove = new JButton("<");
 		btnRemove.setBounds(232, 64, 57, 23);
 		frame.getContentPane().add(btnRemove);
@@ -151,51 +141,51 @@ public class addNewStudent_form {
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
 		comboBox.setBounds(423, 334, 74, 22);
 		frame.getContentPane().add(comboBox);
-		
+
 		JLabel lblFirstName = new JLabel("First Name");
 		lblFirstName.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		lblFirstName.setForeground(new Color(248, 249, 250));
 		lblFirstName.setBounds(296, 215, 86, 14);
 		frame.getContentPane().add(lblFirstName);
-		
+
 		JLabel lblPhoneNumber = new JLabel("Phone Number");
 		lblPhoneNumber.setForeground(new Color(248, 249, 250));
 		lblPhoneNumber.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		lblPhoneNumber.setBounds(296, 264, 86, 14);
 		frame.getContentPane().add(lblPhoneNumber);
-		
+
 		JLabel lblLastName = new JLabel("Last Name");
 		lblLastName.setForeground(new Color(248, 249, 250));
 		lblLastName.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		lblLastName.setBounds(517, 212, 86, 14);
 		frame.getContentPane().add(lblLastName);
-		
+
 		JLabel lblAddress = new JLabel("Address");
 		lblAddress.setForeground(new Color(248, 249, 250));
 		lblAddress.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		lblAddress.setBounds(517, 264, 86, 14);
 		frame.getContentPane().add(lblAddress);
-		
+
 		JLabel lblSex = new JLabel("Sex", SwingConstants.CENTER);
 		lblSex.setForeground(new Color(248, 249, 250));
 		lblSex.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		lblSex.setBounds(356, 338, 57, 14);
 		frame.getContentPane().add(lblSex);
-		
+
 		JButton btnReturn = new JButton("Return");
 		btnReturn.setForeground(new Color(33, 37, 41));
 		btnReturn.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		btnReturn.setBackground(new Color(248, 249, 250));
 		btnReturn.setBounds(633, 396, 88, 23);
 		frame.getContentPane().add(btnReturn);
-		
+
 		JButton btnCheckDetails = new JButton("Check Details");
 		btnCheckDetails.setForeground(new Color(33, 37, 41));
 		btnCheckDetails.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
 		btnCheckDetails.setBackground(new Color(248, 249, 250));
 		btnCheckDetails.setBounds(299, 396, 123, 23);
 		frame.getContentPane().add(btnCheckDetails);
-		
+
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setForeground(new Color(33, 37, 41));
 		btnSubmit.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 12));
@@ -249,8 +239,7 @@ public class addNewStudent_form {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				Student_form studentform = new Student_form();
-				studentform.student_form();
+				Student_form studentform = new Student_form(db);
 				frame.dispose();
 			}
 		});
@@ -394,4 +383,8 @@ public class addNewStudent_form {
 		});
 		
 	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
 }

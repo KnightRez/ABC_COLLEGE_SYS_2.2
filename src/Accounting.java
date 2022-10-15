@@ -81,6 +81,4 @@ public class Accounting {
         addTeacher(teacher);
 //        return entry = new Teacher(ID, firstName, lastName, gender, address, phonenumber, department, designation,0,teachingHours);
     }
-
-
 }

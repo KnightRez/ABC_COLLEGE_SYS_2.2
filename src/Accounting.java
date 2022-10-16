@@ -29,7 +29,14 @@ public class Accounting {
         {
             studentEntry.displayStudentInfo();
         }
-    }
+
+        Student stud = null;
+        _students.forEach((s) => {
+            if (s.Id == 'id1') {
+                stud = s;
+                break;
+            }
+        });
 
     public void addTeacher(Teacher teacher)
     {
